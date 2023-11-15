@@ -2,6 +2,8 @@ package main
 
 import (
 	"github.com/aws/aws-cdk-go/awscdk/v2"
+	"os"
+
 	// "github.com/aws/aws-cdk-go/awscdk/v2/awssqs"
 	"github.com/aws/constructs-go/constructs/v10"
 	"github.com/aws/jsii-runtime-go"
@@ -44,7 +46,7 @@ func newAwsStack(scope constructs.Construct, id string, props *AwsStackProps) aw
 
 func env() *awscdk.Environment {
 	return &awscdk.Environment{
-		Account: jsii.String("CDK_DEFAULT_ACCOUNT"),
-		Region:  jsii.String("CDK_DEFAULT_REGION"),
+		Account: jsii.String(os.Getenv("CDK_DEFAULT_ACCOUNT")),
+		Region:  jsii.String(os.Getenv("CDK_DEFAULT_REGION")),
 	}
 }
